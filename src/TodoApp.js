@@ -2,16 +2,17 @@ import React, { useState } from 'react'
 import { Typography, Paper, AppBar, Toolbar, Grid } from '@mui/material'
 import TodoList from './TodoList'
 import TodoForm from './TodoForm'
+import { v4 as uuid} from 'uuid'
 
 function TodoApp() {
     const initialTodos = [
-        { id: 1, task: "Clean Kitchen", completed: false},
-        { id: 2, task: "Take out trash", completed: true},
-        { id: 3, task: "Buy groceries", completed: false},
+        { id: uuid(), task: "Clean Kitchen", completed: false},
+        { id: uuid(), task: "Take out trash", completed: true},
+        { id: uuid(), task: "Buy groceries", completed: false},
     ]
     const [todos, setTodos] = useState(initialTodos)
     const addTodo = newTodoText => {
-        setTodos([...todos, {id: 4, task: newTodoText, completed: false}])
+        setTodos([...todos, {id: uuid(), task: newTodoText, completed: false}])
     }
     const removeTodo = todoId => {
         const updatedTodos = todos.filter(todo => todo.id !== todoId)
