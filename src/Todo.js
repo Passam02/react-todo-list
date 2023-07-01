@@ -1,7 +1,7 @@
 import React from 'react'
-import { ListItem, ListItemText, Checkbox, Chip, IconButton, ListItemSecondaryAction } from '@mui/material'
+import { ListItem, ListItemText, Checkbox, IconButton, ListItemSecondaryAction } from '@mui/material'
 import { Delete, Edit } from '@mui/icons-material'
-function Todo({task, completed}) {
+function Todo({task, completed, removeTodo, id}) {
     return (
         <ListItem>
             <Checkbox tabIndex={-1} checked={completed}/>
@@ -12,7 +12,7 @@ function Todo({task, completed}) {
                 <IconButton aria-label='Edit'>
                     <Edit/>
                 </IconButton>
-                <IconButton aria-label='Delete'>
+                <IconButton aria-label='Delete' onClick={() => removeTodo(id)}>
                     <Delete/>
                 </IconButton>
             </ListItemSecondaryAction>
@@ -20,11 +20,3 @@ function Todo({task, completed}) {
     )
 }
 export default Todo
-
-/*<Chip
-  label="Custom delete icon"
-  onClick={handleClick}
-  onDelete={handleDelete}
-  deleteIcon={<DeleteIcon />}
-  variant="outlined"
-/>*/

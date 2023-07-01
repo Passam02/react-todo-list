@@ -1,14 +1,14 @@
-import React, {useState} from 'react'
+import React from 'react'
 import Todo from './Todo'
-import { Paper, List, ListItem, ListItemText, Divider } from '@mui/material'
+import { Paper, List, Divider } from '@mui/material'
 
-function TodoList(props) {
+function TodoList({todos, removeTodo}) {
     return(
         <Paper>
             <List>
-            {props.todos.map(todo => (
+            {todos.map(todo => (
                 <>
-                    <Todo task={todo.task} key={todo.id} completed={todo.completed}/>
+                    <Todo removeTodo={removeTodo} id={todo.id} task={todo.task} key={todo.id} completed={todo.completed}/>
                     <Divider/>
                 </>
             ))}
@@ -16,4 +16,4 @@ function TodoList(props) {
         </Paper>
     )
 }
-export default TodoList
+export default TodoList 
