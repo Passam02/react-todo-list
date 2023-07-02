@@ -1,7 +1,7 @@
 import React from 'react'
 import { TextField } from '@mui/material'
 import useInputState from './hooks/useInputState'
-import { ListItem, ListItemText, Checkbox, IconButton, ListItemSecondaryAction } from '@mui/material'
+import { IconButton, ListItemSecondaryAction } from '@mui/material'
 import { Cancel } from '@mui/icons-material'
 
 function EditTodoForm({editTodo, id, task, toggleEdit}) {
