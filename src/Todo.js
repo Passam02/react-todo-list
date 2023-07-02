@@ -1,21 +1,28 @@
 import React from 'react'
 import { ListItem, ListItemText, Checkbox, IconButton, ListItemSecondaryAction } from '@mui/material'
 import { Delete, Edit } from '@mui/icons-material'
-function Todo({task, completed, removeTodo, toggleTodo, id}) {
+import useToggleState from './hooks/useToggleState'
+import EditTodoForm from './EditTodoForm'
+
+function Todo({task, completed, removeTodo, toggleTodo, id, editTodo}) {
+    const [isEditing, toggle] = useToggleState()
     return (
         <ListItem>
+            {isEditing ? <EditTodoForm editTodo={editTodo} id={id} task={task} toggleEdit={toggle}/>:
+            <>
             <Checkbox tabIndex={-1} checked={completed} onClick={() => toggleTodo(id)}/>
             <ListItemText style={{textDecoration: completed ? "line-through" : "none"}}>
                 {task}
             </ListItemText>
             <ListItemSecondaryAction>
-                <IconButton aria-label='Edit'>
+                <IconButton aria-label='Edit' onClick={toggle}>
                     <Edit/>
                 </IconButton>
                 <IconButton aria-label='Delete' onClick={() => removeTodo(id)}>
                     <Delete/>
                 </IconButton>
             </ListItemSecondaryAction>
+            </>}
         </ListItem>
     )
 }
