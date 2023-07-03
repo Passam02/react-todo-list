@@ -1,11 +1,13 @@
 import React, { useEffect } from 'react'
+import UseLocalStorageState from './hooks/useLocalStorageState'
 import useTodoState from './hooks/useTodoState'
 import { Typography, Paper, AppBar, Toolbar, Grid } from '@mui/material'
 import TodoList from './TodoList'
 import TodoForm from './TodoForm'
+import ColorMode from './ColorMode'
 
 
-function TodoApp() {
+function TodoApp({setDarkMode}) {
     const initialTodos = []
     const {todos, addTodo, removeTodo, toggleTodo, editTodo} = useTodoState(initialTodos)
 
@@ -14,13 +16,13 @@ function TodoApp() {
             padding: 0,
             margin: 0,
             height: "100vh",
-            backgroundColor: "#fafafa"
             }}
             elevation={0}
             >
             <AppBar color='primary' position='static' style={{ height: "64px" }}>
                 <Toolbar>
                     <Typography color='inherit'>TODOS </Typography>
+                    <ColorMode setDarkMode={setDarkMode}/>
                 </Toolbar>
             </AppBar>
             <Grid container justifyContent={'center'} marginTop={'1rem'}>

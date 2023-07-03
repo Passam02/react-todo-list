@@ -17,7 +17,7 @@ function TodoList({todos, removeTodo, toggleTodo, editTodo}) {
                         completed={todo.completed}
                         editTodo={editTodo}   
                     />
-                    {i < todos.length - 1 && <Divider/>}
+                    {i < todos.length - 1 && <Divider key={todo.id + i}/>}
                 </>
             ))}
             </List>
