@@ -1,15 +1,13 @@
 import React, { useEffect } from 'react'
-import UseLocalStorageState from './hooks/useLocalStorageState'
 import useTodoState from './hooks/useTodoState'
 import { Typography, Paper, AppBar, Toolbar, Grid } from '@mui/material'
 import TodoList from './TodoList'
 import TodoForm from './TodoForm'
 import ColorMode from './ColorMode'
+import { TodosProvider } from './contexts/todos.context'
 
 
 function TodoApp({setDarkMode}) {
-    const initialTodos = []
-    const {todos, addTodo, removeTodo, toggleTodo, editTodo} = useTodoState(initialTodos)
 
     return (
         <Paper style={{
@@ -27,13 +25,11 @@ function TodoApp({setDarkMode}) {
             </AppBar>
             <Grid container justifyContent={'center'} marginTop={'1rem'}>
                 <Grid item xs={11} md={8} lg={4}>
-                    <TodoForm addTodo={addTodo}/>
-                    <TodoList 
-                        todos={todos} 
-                        toggleTodo={toggleTodo} 
-                        removeTodo={removeTodo}
-                        editTodo={editTodo}    
-                    />
+                    <TodosProvider>
+                        <TodoForm/>
+                        <TodoList    
+                        />
+                    </TodosProvider>
                 </Grid>
             </Grid>
         </Paper>
