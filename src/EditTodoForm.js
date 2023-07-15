@@ -3,10 +3,10 @@ import { TextField } from '@mui/material'
 import useInputState from './hooks/useInputState'
 import { IconButton, ListItemSecondaryAction } from '@mui/material'
 import { Cancel } from '@mui/icons-material'
-import { TodosContext } from './contexts/todos.context'
+import { DispatchContext } from './contexts/todos.context'
 
 function EditTodoForm({ id, task, toggleEdit}) {
-    const { dispatch } = useContext(TodosContext)
+    const  dispatch = useContext(DispatchContext)
     const [value, handleChange, reset] = useInputState(task)
     return (
         <>

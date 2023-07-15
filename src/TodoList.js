@@ -5,7 +5,7 @@ import { TodosContext } from './contexts/todos.context'
 
 
 function TodoList() {
-    const { todos } = useContext(TodosContext)
+    const todos = useContext(TodosContext)
     return(
         <Paper>
             <List style={{padding: '0'}}>
